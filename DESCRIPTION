@@ -2,8 +2,8 @@ Package: pavian
 Type: Package
 Title: Visualize and analyze metagenomics classification results
 Version: 0.8.4
-URL: https://github.com/fbreitwieser/pavian
-BugReports: https://github.com/fbreitwieser/pavian/issues
+URL: https://github.com/phac-nml/pavian
+BugReports: https://github.com/phac-nml/pavian/issues
 Authors@R: person("Florian P", "Breitwieser", email = "fbreitw1@jhu.edu", role = c("aut", "cre"))
 Description: R package and Shiny app to visualize and analyze metagenomics classification results from
     Kraken, Centrifuge and MetaPhlAn.
@@ -24,6 +24,8 @@ Imports:
     RColorBrewer,
     colorspace,
     ggplot2,
+    GalaxyConnector,
+    jsonlite,
     rhandsontable,
     rappdirs
 Suggests: 
