@@ -67,8 +67,9 @@ selectDataPanel <- function(ns) {
   url <- Sys.getenv("GX_GALAXY_URL")
   history_id <- Sys.getenv("GX_HISTORY_ID")
   GalaxyConnector::gx_init(API_KEY = api, GALAXY_URL = url, HISTORY_ID = history_id) # Initialize our pkg env
-  
-  user_data <- GalaxyConnector::gx_list_history_datasets()['name']
+
+  # Grab the Galaxy data to be displayed. Filter out all the deleted datasets - we don't want them!
+  user_data <- dplyr::filter(GalaxyConnector::gx_list_history_datasets(), deleted == FALSE)['name'] 
   
   tabPanel("Select data from history",
            selectizeInput(inputId = ns("select_dataset"),
