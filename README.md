@@ -19,7 +19,7 @@ Pavian is an R package, and thus requires R to run. Look [here](http://a-little-
 
 ```r
 if (!require(remotes)) { install.packages("remotes") }
-remotes::install_github("justinband/pavian", ref='galaxy')
+remotes::install_github("phac-nml/pavian", ref='master')
 ```
 
 To run Pavian from R, type
