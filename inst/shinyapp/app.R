@@ -4,8 +4,8 @@ library(jsonlite)
 if(!require(pavian)){
   options(repos = c(CRAN = "http://cran.rstudio.com"))
   if (!require(remotes)) { install.packages("remotes") }
-  remotes::install_github("justinband/pavian",
-                          ref = "galaxy")
+  remotes::install_github("phac-nml/pavian",
+                          ref = "master")
   library(pavian)
 }
 
@@ -18,7 +18,7 @@ if (!require(Rsamtools)) {
 if(!require(GalaxyConnector)){
   options(repos = c(CRAN = "http://cran.rstudio.com")) 
   if(!require(remotes)){ install.packages("remotes") }
-  remotes::install_github("justinband/r-galaxy-connector", ref="pavian")
+  remotes::install_github("phac-nml/r-galaxy-connector", ref="master")
   library(GalaxyConnector)
 }
 
@@ -54,6 +54,11 @@ options(
     search = list(regex = TRUE, caseInsensitive = TRUE)
   )
 )
+
+api <- Sys.getenv("GX_API_KEY")
+url <- Sys.getenv("GX_GALAXY_URL")
+history_id <- Sys.getenv("GX_HISTORY_ID")
+GalaxyConnector::gx_init(API_KEY = api, GALAXY_URL = url, HISTORY_ID = history_id) # Initialize our pkg env
 
 # Shiny app call
 shiny::shinyApp(pavian::dashboardUI, pavian::pavianServer, enableBookmarking="server")

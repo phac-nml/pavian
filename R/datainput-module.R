@@ -63,11 +63,6 @@ uploadFilePanel <- function(ns) {
 }
 
 selectDataPanel <- function(ns) {
-  api <- Sys.getenv("GX_API_KEY")
-  url <- Sys.getenv("GX_GALAXY_URL")
-  history_id <- Sys.getenv("GX_HISTORY_ID")
-  GalaxyConnector::gx_init(API_KEY = api, GALAXY_URL = url, HISTORY_ID = history_id) # Initialize our pkg env
-
   # Grab the Galaxy data to be displayed. Filter out all the deleted datasets - we don't want them!
   user_data <- dplyr::filter(GalaxyConnector::gx_list_history_datasets(), deleted == FALSE)['name'] 
   
